@@ -1,0 +1,28 @@
+<h1>Colour scale formatter</h1>
+<select [(ngModel)]="type" (change)="generateColours()">
+  <option value="rgb">RGB</option>
+  <option value="hex">HEX</option>
+  <option value="hsl">HSL</option>
+  <option value="rgba">RGBA</option>
+</select>
+<select [(ngModel)]="direction" (change)="generateColours()">
+  <option value="asc">Largest to Smallest</option>
+  <option value="desc">Smallest to Largest</option>
+</select>
+<input [(ngModel)]="startAt" type="number" placeholder="start at number">
+<input [(ngModel)]="numberOfItems" type="number" placeholder="number of items">
+<button (click)="generateColours()">Generate</button>
+<p>Saturation ({{saturation}}%)</p>
+<input [(ngModel)]="saturation" [type]="'range'" (input)="satRangeChange($event)" type="number">
+<p>Lightness ({{lightness}}%)</p>
+<input [(ngModel)]="lightness" [type]="'range'" (input)="ligRangeChange($event)" type="number">
+<p>Transparency ({{transparency}}%)</p>
+<input [(ngModel)]="transparency" [type]="'range'" (input)="ligRangeChange($event)" type="number">
+<br><br>
+<div>
+  <div style="height: 20px; width: 25px; margin-bottom: 5px; float: left; text-align: center;"
+    *ngFor="let listItem of list" [style.backgroundColor]="listItem.colour">
+    {{listItem.value}}
+  </div>
+</div>
+<div style="clear:both;"></div>
